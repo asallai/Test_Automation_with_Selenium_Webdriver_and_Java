@@ -4,24 +4,66 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 /*
-0. open the browser
-1. open site (www.vpl.ca)
-2. search for a keyword
-3. click on the first result
-4. in the details page, verify that the book name and author are displayed
-5. close the browser
+0.Open the browser
+1.Open site (www.vpl.ca)
+2.Search for a keyword
+3.Click on the first result
+4.In the details page, verify that the book name is displayed
+5.Close the browser
  */
 
 public class SimpleTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        System.setProperty("webdriver.chrome.driver","C:\\ChromeDriver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver.exe");
+
+        // 0.Open the browser
         WebDriver driver;
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
 
+        // 1.Open site (www.vpl.ca)
 
+        driver.get("https://www.vpl.ca");
 
-     //   driver.quit();
+        System.out.println("Web page url: " + driver.getCurrentUrl());
+
+        // 2.Search for a keyword
+
+        WebElement searchField;
+        searchField = driver.findElement(By.xpath("//input[@id='edit-search']"));
+        searchField.sendKeys("java");
+
+        WebElement searchButton;
+        searchButton = driver.findElement(By.xpath("//input[@id='edit-submit']"));
+        searchButton.click();
+
+        Thread.sleep(1000);
+        System.out.println("Result page url: " + driver.getCurrentUrl());
+
+        // 3.Click on the first result
+
+        WebElement firstResultLink;
+        firstResultLink = driver.findElement(By.xpath("(//a[@data-key='bib-title'])[1]"));
+        firstResultLink.click();
+
+        // 4.In the details page, verify that the book name is displayed
+
+        Thread.sleep(1000);
+        System.out.println("Details page url: " + driver.getCurrentUrl());
+
+        WebElement bookTitleElement;
+        bookTitleElement = driver.findElement(By.xpath("//div[@class = 'sub-title']"));
+
+        String bookTitle = bookTitleElement.getText();
+
+        if(bookTitleElement.isDisplayed() == true)
+            System.out.println("Book title is displayed on the details page: " + bookTitle );
+        else
+            System.out.println("Book title is NOT displayed on the details page");
+
+        // 5.Close the browser
+        driver.quit();
     }
 }
