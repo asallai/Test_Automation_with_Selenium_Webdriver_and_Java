@@ -27,12 +27,13 @@ public class SimpleTest {
 
         driver.get("https://www.vpl.ca");
 
-        System.out.println("Web page url: " + driver.getCurrentUrl());
+        System.out.println("Web page:" + driver.getCurrentUrl() + " Title:" + driver.getTitle());
 
         // 2.Search for a keyword
 
         WebElement searchField;
         searchField = driver.findElement(By.xpath("//input[@id='edit-search']"));
+        searchField.click();
         searchField.sendKeys("java");
 
         WebElement searchButton;
@@ -40,7 +41,7 @@ public class SimpleTest {
         searchButton.click();
 
         Thread.sleep(1000);
-        System.out.println("Result page url: " + driver.getCurrentUrl());
+        System.out.println("Result page:" + driver.getCurrentUrl() + " Title:" + driver.getTitle());
 
         // 3.Click on the first result
 
@@ -51,7 +52,7 @@ public class SimpleTest {
         // 4.In the details page, verify that the book name is displayed
 
         Thread.sleep(1000);
-        System.out.println("Details page url: " + driver.getCurrentUrl());
+        System.out.println("Details page:" + driver.getCurrentUrl() + " Title:" + driver.getTitle());
 
         WebElement bookTitleElement;
         bookTitleElement = driver.findElement(By.xpath("//div[@class = 'sub-title']"));
@@ -59,7 +60,7 @@ public class SimpleTest {
         String bookTitle = bookTitleElement.getText();
 
         if(bookTitleElement.isDisplayed() == true)
-            System.out.println("Book title is displayed on the details page: " + bookTitle );
+            System.out.println("Book title is displayed on the details page: " + bookTitle);
         else
             System.out.println("Book title is NOT displayed on the details page");
 
