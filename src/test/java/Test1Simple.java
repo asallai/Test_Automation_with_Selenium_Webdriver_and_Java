@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 5.Close the browser
  */
 
-public class SimpleTest {
+public class Test1Simple {
 
     public static void main(String[] args) throws InterruptedException {
 

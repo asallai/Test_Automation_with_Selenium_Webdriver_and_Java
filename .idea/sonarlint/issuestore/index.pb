@@ -17,3 +17,6 @@ d
 4Test_Automation_with_Selenium_Webdriver_and_Java.iml,e\0\e0f7e8b0abf57135dbf3606ce37d93fef924bcd2
 ^
 .src/main/java/practice/strings/Capitalize.java,d\1\d1a9c1828c197a51e6191708405dbadde3fb31ab
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
