@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 5.Close the browser
  */
 
-public class Test1Simple {
+public class SimpleTest1 {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -55,7 +55,7 @@ public class Test1Simple {
         System.out.println("Details page:" + driver.getCurrentUrl() + " Title:" + driver.getTitle());
 
         WebElement bookTitleElement;
-        bookTitleElement = driver.findElement(By.xpath("//div[@class = 'sub-title']"));
+        bookTitleElement = driver.findElement(By.xpath("//div[@class='sub-title']"));
 
         String bookTitle = bookTitleElement.getText();
 

@@ -1,2 +1,3 @@
 Practicing...
 Test Automation with Selenium Webdriver and Java
+based on Alex Siminiuc's cours. https://www.linkedin.com/in/alexsiminiuc/
