@@ -7,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 0. CODE WITHOUT REFACTORING
  */
 
-public class RefactorLibraryTestsStep0 {
+public class RefactorTest1Step0 {
 
     public static void main(String[] args) {
 

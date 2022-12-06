@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 1. BREAK THE CODE IN UNIT TEST SCRIPT
  */
 
-public class RefactorLibraryTestsStep1 {
+public class RefactorTest1Step1 {
 
     // TEST CASE 1: book title and author are displayed and not empty
 

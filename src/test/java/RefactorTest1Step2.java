@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 2. USE ASSERTIONS FOR TEST CASE VERIFICATIONS
  */
 
-public class RefactorLibraryTestsStep2 {
+public class RefactorTest1Step2 {
 
     // TEST CASE 1: book title and author are displayed and not empty
 

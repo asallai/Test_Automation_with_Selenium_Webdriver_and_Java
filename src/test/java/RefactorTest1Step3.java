@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 3. USE TEST FIXTURES FOR PREPARING AND CLEANING THE TEST ENVIRONMENT: setUp, tearDown
  */
 
-public class RefactorLibraryTestsStep3 {
+public class RefactorTest1Step3 {
 
     WebDriver driver;
 
