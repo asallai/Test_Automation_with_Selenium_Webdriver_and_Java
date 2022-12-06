@@ -1,27 +1,41 @@
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
 import static org.junit.Assert.assertTrue;
 
 /*
-2. USE ASSERTIONS FOR TEST CASE VERIFICATIONS
+3. USE TEST FIXTURES FOR PREPARING AND CLEANING THE TEST ENVIRONMENT: setUp, tearDown
  */
 
-public class RefactorTest1Step2 {
+public class RefactorLibraryTestStep3 {
+
+    WebDriver driver;
+
+    @Before
+    public void setUp() {
+        driver = new FirefoxDriver();
+    }
+
+    @After
+    public void tearDown() {
+        driver.quit();
+    }
+
 
     // TEST CASE 1: book title and author are displayed and not empty
 
     @Test
     public void testResultDetails() {
 
-        WebDriver driver = new FirefoxDriver();
-
         // open the home page and check that the home page title is correct
         driver.get("http://www.vpl.ca");
 
-        assertTrue("incorrect home page title",
+        assertTrue("the home page title is incorrect",
                 driver.getTitle().equalsIgnoreCase("Vancouver Public Library - Home") == true);
 
         // search with a keyword, the result page is opened as result of the search
@@ -32,8 +46,8 @@ public class RefactorTest1Step2 {
         WebElement searchButton = driver.findElement(By.xpath("//input[@class='search_button']"));
         searchButton.click();
 
-        // check that the result page title is correct
-        assertTrue("result page title incorrect",
+        //check that the result  page title is correct
+        assertTrue("the result page title is incorrect",
                 driver.getTitle().equalsIgnoreCase("Search | Vancouver Public Library | BiblioCommons") == true);
 
         // click on the first result, the details page is opened as a result
@@ -55,9 +69,6 @@ public class RefactorTest1Step2 {
 
         assertTrue ("the book author is not displayed", bookAuthor.isDisplayed() == true);
         assertTrue ("the book author is empty", bookAuthor.getText().length() > 0);
-
-        //close the browser
-        driver.quit();
     }
 
 
@@ -65,8 +76,6 @@ public class RefactorTest1Step2 {
 
     @Test
     public void testPaging() {
-
-        WebDriver driver = new FirefoxDriver();
 
         // open the home page and check that the home page title is correct
         driver.get("http://www.vpl.ca");
@@ -83,10 +92,10 @@ public class RefactorTest1Step2 {
         searchButton.click();
 
         // check that the result page title is correct
-        assertTrue ("result page title incorrect",
+        assertTrue ("the result page title is incorrect",
                 driver.getTitle().equalsIgnoreCase("Search | Vancouver Public Library | BiblioCommons") == true);
 
-        //check that the number of results is displayed and correct
+        // check that the number of results is displayed and correct
         WebElement numberResultPageOne = driver.findElement(By.xpath("//span[@class='items_showing_count']"));
 
         assertTrue ("page 1 results number is not displayed", numberResultPageOne.isDisplayed() == true);
@@ -101,9 +110,6 @@ public class RefactorTest1Step2 {
 
         assertTrue ("page 2 results number is not displayed", numberResultPageTwo.isDisplayed() == true);
         assertTrue ("page 2 results number is not correct", numberResultPageTwo.getText().indexOf("26 - 50") >=0);
-
-        //close the browser
-        driver.quit();
     }
 
 }
