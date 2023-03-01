@@ -1,3 +1,5 @@
+package task1;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,7 +29,8 @@ public class SimpleTest1 {
 
         driver.get("https://www.vpl.ca");
 
-        System.out.println("Web page:" + driver.getCurrentUrl() + " Title:" + driver.getTitle());
+        System.out.println("Web page:" + driver.getCurrentUrl());
+        System.out.println("Title:" + driver.getTitle());
 
         // 2.Search for a keyword
 
@@ -41,7 +44,8 @@ public class SimpleTest1 {
         searchButton.click();
 
         Thread.sleep(1000);
-        System.out.println("Result page:" + driver.getCurrentUrl() + " Title:" + driver.getTitle());
+        System.out.println("Result page:" + driver.getCurrentUrl());
+        System.out.println("Title:" + driver.getTitle());
 
         // 3.Click on the first result
 
@@ -52,14 +56,15 @@ public class SimpleTest1 {
         // 4.In the details page, verify that the book name is displayed
 
         Thread.sleep(1000);
-        System.out.println("Details page:" + driver.getCurrentUrl() + " Title:" + driver.getTitle());
+        System.out.println("Details page:" + driver.getCurrentUrl());
+        System.out.println("Title:" + driver.getTitle());
 
         WebElement bookTitleElement;
-        bookTitleElement = driver.findElement(By.xpath("//div[@class='sub-title']"));
+        bookTitleElement = driver.findElement(By.xpath("//div[@class='cp-bib-title']"));
 
         String bookTitle = bookTitleElement.getText();
 
-        if(bookTitleElement.isDisplayed() == true)
+        if(bookTitleElement.isDisplayed())
             System.out.println("Book title is displayed on the details page: " + bookTitle);
         else
             System.out.println("Book title is NOT displayed on the details page");
