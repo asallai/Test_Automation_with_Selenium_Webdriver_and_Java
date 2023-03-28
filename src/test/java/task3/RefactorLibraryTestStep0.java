@@ -1,3 +1,5 @@
+package task3;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,7 +20,7 @@ public class RefactorLibraryTestStep0 {
         // open the home page and check that the home page title is correct
         driver.get("http://www.vpl.ca");
 
-        if (driver.getTitle().equalsIgnoreCase("Vancouver Public Library - Home") == true)
+        if (driver.getTitle().equalsIgnoreCase("Vancouver Public Library - Home"))
             System.out.println("correct home page title");
         else {
             System.out.println("incorrect home page title, stop application");
@@ -36,8 +38,8 @@ public class RefactorLibraryTestStep0 {
         searchButton = driver.findElement(By.xpath("//input[@class='search_button']"));
         searchButton.click();
 
-        // check that the results page title is correct
-        if (driver.getTitle().equalsIgnoreCase("Search | Vancouver Public Library | BiblioCommons") == true)
+        // check that the result page title is correct
+        if (driver.getTitle().equalsIgnoreCase("Search | Vancouver Public Library | BiblioCommons"))
             System.out.println("correct results page title");
         else {
             System.out.println("incorrect results page title, stop application");
@@ -50,7 +52,7 @@ public class RefactorLibraryTestStep0 {
         firstResult.click();
 
         // check that the title of details page is correct
-        if (driver.getTitle().indexOf("Vancouver Public Library | BiblioCommons") >= 0)
+        if (driver.getTitle().contains("Vancouver Public Library | BiblioCommons"))
             System.out.println("correct details page title");
         else {
             System.out.println("incorrect details page title, stop the application");
@@ -60,7 +62,7 @@ public class RefactorLibraryTestStep0 {
         // check that the book title is displayed and not empty
         WebElement bookTitle = driver.findElement(By.xpath("//h1[@id='item_bib_title']"));
 
-        if (bookTitle.isDisplayed() == true)
+        if (bookTitle.isDisplayed())
             System.out.println("book title displayed");
         else {
             System.out.println("book title not displayed, stop application");
@@ -78,7 +80,7 @@ public class RefactorLibraryTestStep0 {
         WebElement bookAuthor;
         bookAuthor = driver.findElement(By.xpath("//a[@testid='author_search']"));
 
-        if (bookAuthor.isDisplayed() == true)
+        if (bookAuthor.isDisplayed())
             System.out.println("book author displayed");
         else {
             System.out.println("book author not displayed, stop application");
@@ -109,7 +111,7 @@ public class RefactorLibraryTestStep0 {
             System.exit(0);
         }
 
-        if (numberResultPageOne.getText().indexOf("1 - 25") >=0 )
+        if (numberResultPageOne.getText().contains("1 - 25"))
             System.out.println("Results number on page 1 - correct");
         else {
             System.out.println("Results number on page 1 - not correct, stop app");
@@ -124,14 +126,14 @@ public class RefactorLibraryTestStep0 {
         WebElement numberResultPageTwo;
         numberResultPageTwo  = driver.findElement(By.xpath("//span[@class='items_showing_count']"));
 
-        if (numberResultPageTwo.isDisplayed() == true)
+        if (numberResultPageTwo.isDisplayed())
             System.out.println("Results number on page 2 - displayed");
         else {
             System.out.println("Results number on page 2 - not displayed, stop app");
             System.exit(0);
         }
 
-        if (numberResultPageTwo.getText().indexOf("26 - 50") >=0)
+        if (numberResultPageTwo.getText().contains("26 - 50"))
             System.out.println("Results number on page 2 - correct");
         else {
             System.out.println("Results number on page 2 - not correct, stop app");
@@ -141,5 +143,4 @@ public class RefactorLibraryTestStep0 {
         // close the browser
         driver.quit();
     }
-
 }
