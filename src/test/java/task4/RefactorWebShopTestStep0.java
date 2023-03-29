@@ -47,7 +47,7 @@ public class RefactorWebShopTestStep0 {
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@testid='no-email-pwd-msg']")));
 
-        assertTrue(noEmailPwdMsg.isDisplayed() == true);
+        assertTrue(noEmailPwdMsg.isDisplayed());
     }
 
     @Test
@@ -77,7 +77,7 @@ public class RefactorWebShopTestStep0 {
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@testid='no-email-pwd-msg'])")));
 
-        assertTrue(noEmailPwdMsg.getText().contains("No match for these e-mail and/or password") == true);
+        assertTrue(noEmailPwdMsg.getText().contains("No match for these e-mail and/or password"));
     }
 
     @Test
@@ -106,7 +106,7 @@ public class RefactorWebShopTestStep0 {
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@testid='no-email-pwd-msg']")));
 
-        assertTrue(noEmailPwdMsg.getText().contains("Wrong email format! Please use this format: email@domain.com") == true);
+        assertTrue(noEmailPwdMsg.getText().contains("Wrong email format! Please use this format: email@domain.com"));
     }
 
     @Test
@@ -129,6 +129,6 @@ public class RefactorWebShopTestStep0 {
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@testid='no-email-pwd-msg'")));
 
-        assertTrue(noEmailPwdMsg.getText().contains("Please enter your password") == true);
+        assertTrue(noEmailPwdMsg.getText().contains("Please enter your password"));
     }
 }

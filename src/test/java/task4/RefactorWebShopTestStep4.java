@@ -12,9 +12,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.assertTrue;
 
-// REFACTOR STEP 2: DO NOT OPEN PAGES IN THE SETUP() METHOD
+// REFACTOR STEP 3: VARIABLES CAN BE DECLARED AND INSTANTIATED AT THE SAME LINE
 
-public class RefactorWebShopTestStep2 {
+public class RefactorWebShopTestStep4 {
+
+    By signInLinkLocator = By.id("sign-in-link");
+    By emailFieldLocator = By.id("email-input");
+    By passwordFieldLocator = By.id("pwd-input");
+    By signInBtnLocator = By.id("sign-in-btn");
+    By noEmailPwdMsgLocator = By.xpath("//div[@testid='no-email-pwd-msg']");
 
     WebDriver driver;
     WebDriverWait wait;
@@ -33,110 +39,93 @@ public class RefactorWebShopTestStep2 {
 
     @Test
     public void testLoginWithEmptyEmailAndPwd() {
-        WebElement signInLink;
-        WebElement signInBtn;
-        WebElement noEmailPwdMsg;
 
         driver.get("http://www.webshop.com");
         driver.manage().window().maximize();
 
-        signInLink = wait.until(ExpectedConditions.elementToBeClickable(By.id("sign-in-link")));
+        WebElement signInLink = wait.until(ExpectedConditions.elementToBeClickable(signInLinkLocator));
         signInLink.click();
 
-        signInBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("sign-in-btn")));
+        WebElement signInBtn = wait.until(ExpectedConditions.elementToBeClickable(signInBtnLocator));
         signInBtn.click();
 
-        noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@testid='no-email-pwd-msg']")));
+        WebElement noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(noEmailPwdMsgLocator));
 
         assertTrue(noEmailPwdMsg.isDisplayed());
     }
 
     @Test
     public void testLoginWithValidEmailAndInvalidPwd() {
-        WebElement signInLink;
-        WebElement emailField;
-        WebElement passwordField;
-        WebElement signInBtn;
-        WebElement noEmailPwdMsg;
         String validEmail = "test1@yahoo.com";
         String notExistPwd = "notexist";
 
         driver.get("http://www.webshop.com");
         driver.manage().window().maximize();
 
-        signInLink = wait.until(ExpectedConditions.elementToBeClickable(By.id("sign-in-link")));
+        WebElement signInLink = wait.until(ExpectedConditions.elementToBeClickable(signInLinkLocator));
         signInLink.click();
 
-        emailField = wait.until(ExpectedConditions.elementToBeClickable(By.id("email-input")));
+        WebElement emailField = wait.until(ExpectedConditions.elementToBeClickable(emailFieldLocator));
         emailField.click();
         emailField.sendKeys(validEmail);
 
-        passwordField = wait.until(ExpectedConditions.elementToBeClickable(By.id("pwd-input")));
+        WebElement passwordField = wait.until(ExpectedConditions.elementToBeClickable(passwordFieldLocator));
         passwordField.click();
         passwordField.sendKeys(notExistPwd);
 
-        signInBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("sign-in-btn")));
+        WebElement signInBtn = wait.until(ExpectedConditions.elementToBeClickable(signInBtnLocator));
         signInBtn.click();
 
-        noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@testid='no-email-pwd-msg'])")));
+        WebElement noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(noEmailPwdMsgLocator));
 
         assertTrue(noEmailPwdMsg.getText().contains("No match for these e-mail and/or password"));
     }
 
     @Test
     public void testLoginWithValidPwdAndInvalidEmail() {
-        WebElement signInLink;
-        WebElement emailField;
-        WebElement passwordField;
-        WebElement signInBtn;
-        WebElement noEmailPwdMsg;
         String invalidEmail = "test1.g.com";
         String validPassword = "Pass123";
 
         driver.get("http://www.webshop.com");
         driver.manage().window().maximize();
 
-        signInLink = wait.until(ExpectedConditions.elementToBeClickable(By.id("sign-in-link")));
+        WebElement signInLink = wait.until(ExpectedConditions.elementToBeClickable(signInLinkLocator));
         signInLink.click();
 
-        emailField = wait.until(ExpectedConditions.elementToBeClickable(By.id("email-input")));
+        WebElement emailField = wait.until(ExpectedConditions.elementToBeClickable(emailFieldLocator));
         emailField.click();
         emailField.sendKeys(invalidEmail);
 
-        passwordField = wait.until(ExpectedConditions.elementToBeClickable(By.id("pwd-input")));
+        WebElement passwordField = wait.until(ExpectedConditions.elementToBeClickable(passwordFieldLocator));
         passwordField.click();
         passwordField.sendKeys(validPassword);
 
-        signInBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("sign-in-btn")));
+        WebElement signInBtn = wait.until(ExpectedConditions.elementToBeClickable(signInBtnLocator));
         signInBtn.click();
 
-        noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@testid='no-email-pwd-msg']")));
+        WebElement noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(noEmailPwdMsgLocator));
 
         assertTrue(noEmailPwdMsg.getText().contains("Wrong email format! Please use this format: email@domain.com"));
     }
 
     @Test
     public void testLoginWithValidEmailAndEmptyPwd() {
-        WebElement signInLink;
-        WebElement emailField;
-        WebElement signInBtn;
-        WebElement noEmailPwdMsg;
         String validEmail = "test1@gmail.com";
 
         driver.get("http://www.webshop.com");
         driver.manage().window().maximize();
 
-        signInLink = wait.until(ExpectedConditions.elementToBeClickable(By.id("sign-in-link")));
+        WebElement signInLink = wait.until(ExpectedConditions.elementToBeClickable(signInLinkLocator));
         signInLink.click();
 
-        emailField = wait.until(ExpectedConditions.elementToBeClickable(By.id("email-input")));
+        WebElement emailField = wait.until(ExpectedConditions.elementToBeClickable(emailFieldLocator));
         emailField.click();
         emailField.sendKeys(validEmail);
 
-        signInBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("sign-in-btn")));
+        WebElement signInBtn = wait.until(ExpectedConditions.elementToBeClickable(signInBtnLocator));
         signInBtn.click();
 
-        noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@testid='no-email-pwd-msg'")));
+        WebElement noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(noEmailPwdMsgLocator));
 
         assertTrue(noEmailPwdMsg.getText().contains("Please enter your password"));
     }
