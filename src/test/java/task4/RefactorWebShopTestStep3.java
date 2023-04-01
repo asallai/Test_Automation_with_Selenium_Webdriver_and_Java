@@ -12,9 +12,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.assertTrue;
 
-// REFACTOR STEP 3: CREATE CLASS VARIABLE FOR THE LOCATORS
+// REFACTOR STEP 3: CREATE CLASS VARIABLE FOR THE LOCATORS AND THE WEB ELEMENTS
 
 public class RefactorWebShopTestStep3 {
+    WebElement signInLink;
+    WebElement signInBtn;
+    WebElement emailField;
+    WebElement passwordField;
+    WebElement noEmailPwdMsg;
 
     By signInLinkLocator = By.id("sign-in-link");
     By emailFieldLocator = By.id("email-input");
@@ -39,10 +44,6 @@ public class RefactorWebShopTestStep3 {
 
     @Test
     public void testLoginWithEmptyEmailAndPwd() {
-        WebElement signInLink;
-        WebElement signInBtn;
-        WebElement noEmailPwdMsg;
-
         driver.get("http://www.webshop.com");
         driver.manage().window().maximize();
 
@@ -53,17 +54,11 @@ public class RefactorWebShopTestStep3 {
         signInBtn.click();
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(noEmailPwdMsgLocator));
-
         assertTrue(noEmailPwdMsg.isDisplayed());
     }
 
     @Test
     public void testLoginWithValidEmailAndInvalidPwd() {
-        WebElement signInLink;
-        WebElement emailField;
-        WebElement passwordField;
-        WebElement signInBtn;
-        WebElement noEmailPwdMsg;
         String validEmail = "test1@yahoo.com";
         String notExistPwd = "notexist";
 
@@ -85,17 +80,11 @@ public class RefactorWebShopTestStep3 {
         signInBtn.click();
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(noEmailPwdMsgLocator));
-
         assertTrue(noEmailPwdMsg.getText().contains("No match for these e-mail and/or password"));
     }
 
     @Test
     public void testLoginWithValidPwdAndInvalidEmail() {
-        WebElement signInLink;
-        WebElement emailField;
-        WebElement passwordField;
-        WebElement signInBtn;
-        WebElement noEmailPwdMsg;
         String invalidEmail = "test1.g.com";
         String validPassword = "Pass123";
 
@@ -117,16 +106,11 @@ public class RefactorWebShopTestStep3 {
         signInBtn.click();
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(noEmailPwdMsgLocator));
-
-        assertTrue(noEmailPwdMsg.getText().contains("Wrong email format! Please use this format: email@domain.com"));
+        assertTrue(noEmailPwdMsg.getText().contains("Please use the correct email format: email@domain.com"));
     }
 
     @Test
     public void testLoginWithValidEmailAndEmptyPwd() {
-        WebElement signInLink;
-        WebElement emailField;
-        WebElement signInBtn;
-        WebElement noEmailPwdMsg;
         String validEmail = "test1@gmail.com";
 
         driver.get("http://www.webshop.com");
@@ -143,7 +127,6 @@ public class RefactorWebShopTestStep3 {
         signInBtn.click();
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(noEmailPwdMsgLocator));
-
         assertTrue(noEmailPwdMsg.getText().contains("Please enter your password"));
     }
 }

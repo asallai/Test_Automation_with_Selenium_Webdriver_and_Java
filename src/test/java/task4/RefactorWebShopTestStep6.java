@@ -12,11 +12,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.assertTrue;
 
-// REFACTOR STEP 4: VARIABLES CAN BE INSTANTIATED AT THE SAME LINE
+// REFACTOR STEP 6: METHODS CAN BE CREATED FOR EACH EXPLICIT WAIT
 
-public class RefactorWebShopTestStep4 {
-    WebElement signInLink;
-    WebElement signInBtn;
+public class RefactorWebShopTestStep6 {
     WebElement emailField;
     WebElement passwordField;
     WebElement noEmailPwdMsg;
@@ -47,13 +45,10 @@ public class RefactorWebShopTestStep4 {
         driver.get("http://www.webshop.com");
         driver.manage().window().maximize();
 
-        signInLink = wait.until(ExpectedConditions.elementToBeClickable(signInLinkLocator));
-        signInLink.click();
+        findIfClickable(signInLinkLocator).click();
+        findIfClickable(signInBtnLocator).click();
 
-        signInBtn = wait.until(ExpectedConditions.elementToBeClickable(signInBtnLocator));
-        signInBtn.click();
-
-        noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(noEmailPwdMsgLocator));
+        noEmailPwdMsg = findIfVisible(noEmailPwdMsgLocator);
         assertTrue(noEmailPwdMsg.isDisplayed());
     }
 
@@ -65,21 +60,19 @@ public class RefactorWebShopTestStep4 {
         driver.get("http://www.webshop.com");
         driver.manage().window().maximize();
 
-        signInLink = wait.until(ExpectedConditions.elementToBeClickable(signInLinkLocator));
-        signInLink.click();
+        findIfClickable(signInLinkLocator).click();
 
-        emailField = wait.until(ExpectedConditions.elementToBeClickable(emailFieldLocator));
+        emailField = findIfClickable(emailFieldLocator);
         emailField.click();
         emailField.sendKeys(validEmail);
 
-        passwordField = wait.until(ExpectedConditions.elementToBeClickable(passwordFieldLocator));
+        passwordField = findIfClickable(passwordFieldLocator);
         passwordField.click();
         passwordField.sendKeys(notExistPwd);
 
-        signInBtn = wait.until(ExpectedConditions.elementToBeClickable(signInBtnLocator));
-        signInBtn.click();
+        findIfClickable(signInBtnLocator).click();
 
-        noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(noEmailPwdMsgLocator));
+        noEmailPwdMsg = findIfVisible(noEmailPwdMsgLocator);
         assertTrue(noEmailPwdMsg.getText().contains("No match for these e-mail and/or password"));
     }
 
@@ -91,21 +84,19 @@ public class RefactorWebShopTestStep4 {
         driver.get("http://www.webshop.com");
         driver.manage().window().maximize();
 
-        signInLink = wait.until(ExpectedConditions.elementToBeClickable(signInLinkLocator));
-        signInLink.click();
+        findIfClickable(signInLinkLocator).click();
 
-        emailField = wait.until(ExpectedConditions.elementToBeClickable(emailFieldLocator));
+        emailField = findIfClickable(emailFieldLocator);
         emailField.click();
         emailField.sendKeys(invalidEmail);
 
-        passwordField = wait.until(ExpectedConditions.elementToBeClickable(passwordFieldLocator));
+        passwordField = findIfClickable(passwordFieldLocator);
         passwordField.click();
         passwordField.sendKeys(validPassword);
 
-        signInBtn = wait.until(ExpectedConditions.elementToBeClickable(signInBtnLocator));
-        signInBtn.click();
+        findIfClickable(signInBtnLocator).click();
 
-        noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(noEmailPwdMsgLocator));
+        noEmailPwdMsg = findIfVisible(noEmailPwdMsgLocator);
         assertTrue(noEmailPwdMsg.getText().contains("Please use the correct email format: email@domain.com"));
     }
 
@@ -116,17 +107,23 @@ public class RefactorWebShopTestStep4 {
         driver.get("http://www.webshop.com");
         driver.manage().window().maximize();
 
-        signInLink = wait.until(ExpectedConditions.elementToBeClickable(signInLinkLocator));
-        signInLink.click();
+        findIfClickable(signInLinkLocator).click();
 
-        emailField = wait.until(ExpectedConditions.elementToBeClickable(emailFieldLocator));
+        emailField = findIfClickable(emailFieldLocator);
         emailField.click();
         emailField.sendKeys(validEmail);
 
-        signInBtn = wait.until(ExpectedConditions.elementToBeClickable(signInBtnLocator));
-        signInBtn.click();
+        findIfClickable(signInBtnLocator).click();
 
-        noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(noEmailPwdMsgLocator));
+        noEmailPwdMsg = findIfVisible(noEmailPwdMsgLocator);
         assertTrue(noEmailPwdMsg.getText().contains("Please enter your password"));
+    }
+
+    private WebElement findIfVisible(By locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    private WebElement findIfClickable(By locator) {
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 }

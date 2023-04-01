@@ -46,7 +46,6 @@ public class RefactorWebShopTestStep0 {
         signInBtn.click();
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@testid='no-email-pwd-msg']")));
-
         assertTrue(noEmailPwdMsg.isDisplayed());
     }
 
@@ -76,7 +75,6 @@ public class RefactorWebShopTestStep0 {
         signInBtn.click();
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@testid='no-email-pwd-msg'])")));
-
         assertTrue(noEmailPwdMsg.getText().contains("No match for these e-mail and/or password"));
     }
 
@@ -87,6 +85,7 @@ public class RefactorWebShopTestStep0 {
         WebElement passwordField;
         WebElement signInBtn;
         WebElement noEmailPwdMsg;
+
         String invalidEmail = "test1.g.com";
         String validPassword = "Pass123";
 
@@ -105,8 +104,7 @@ public class RefactorWebShopTestStep0 {
         signInBtn.click();
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@testid='no-email-pwd-msg']")));
-
-        assertTrue(noEmailPwdMsg.getText().contains("Wrong email format! Please use this format: email@domain.com"));
+        assertTrue(noEmailPwdMsg.getText().contains("Please use the correct email format: email@domain.com"));
     }
 
     @Test
@@ -115,6 +113,7 @@ public class RefactorWebShopTestStep0 {
         WebElement emailField;
         WebElement signInBtn;
         WebElement noEmailPwdMsg;
+
         String validEmail = "test1@gmail.com";
 
         signInLink = wait.until(ExpectedConditions.elementToBeClickable(By.id("sign-in-link")));
@@ -128,7 +127,6 @@ public class RefactorWebShopTestStep0 {
         signInBtn.click();
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@testid='no-email-pwd-msg'")));
-
         assertTrue(noEmailPwdMsg.getText().contains("Please enter your password"));
     }
 }

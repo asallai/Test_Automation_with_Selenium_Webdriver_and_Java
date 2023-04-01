@@ -47,7 +47,6 @@ public class RefactorWebShopTestStep2 {
         signInBtn.click();
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@testid='no-email-pwd-msg']")));
-
         assertTrue(noEmailPwdMsg.isDisplayed());
     }
 
@@ -58,6 +57,7 @@ public class RefactorWebShopTestStep2 {
         WebElement passwordField;
         WebElement signInBtn;
         WebElement noEmailPwdMsg;
+
         String validEmail = "test1@yahoo.com";
         String notExistPwd = "notexist";
 
@@ -79,7 +79,6 @@ public class RefactorWebShopTestStep2 {
         signInBtn.click();
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[@testid='no-email-pwd-msg'])")));
-
         assertTrue(noEmailPwdMsg.getText().contains("No match for these e-mail and/or password"));
     }
 
@@ -90,6 +89,7 @@ public class RefactorWebShopTestStep2 {
         WebElement passwordField;
         WebElement signInBtn;
         WebElement noEmailPwdMsg;
+
         String invalidEmail = "test1.g.com";
         String validPassword = "Pass123";
 
@@ -111,8 +111,7 @@ public class RefactorWebShopTestStep2 {
         signInBtn.click();
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@testid='no-email-pwd-msg']")));
-
-        assertTrue(noEmailPwdMsg.getText().contains("Wrong email format! Please use this format: email@domain.com"));
+        assertTrue(noEmailPwdMsg.getText().contains("Please use the correct email format: email@domain.com"));
     }
 
     @Test
@@ -121,6 +120,7 @@ public class RefactorWebShopTestStep2 {
         WebElement emailField;
         WebElement signInBtn;
         WebElement noEmailPwdMsg;
+
         String validEmail = "test1@gmail.com";
 
         driver.get("http://www.webshop.com");
@@ -137,7 +137,6 @@ public class RefactorWebShopTestStep2 {
         signInBtn.click();
 
         noEmailPwdMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@testid='no-email-pwd-msg'")));
-
         assertTrue(noEmailPwdMsg.getText().contains("Please enter your password"));
     }
 }
