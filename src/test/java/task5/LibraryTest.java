@@ -14,6 +14,14 @@ import static org.junit.Assert.assertTrue;
 
 public class LibraryTest {
 
+    /*
+     1. open the Library web page
+     2. type java in the search textbox
+     3. click the search button
+     4. click on page 2
+     5. validate that page 2 is correct
+     */
+
     WebDriver driver;
     WebDriverWait wait;
 
