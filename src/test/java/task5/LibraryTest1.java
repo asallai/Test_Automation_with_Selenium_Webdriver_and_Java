@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.assertTrue;
 
-public class LibraryTest {
+public class LibraryTest1 {
 
     /*
      1. open the Library web page
@@ -27,7 +27,7 @@ public class LibraryTest {
 
     WebElement searchTextBox;
     WebElement searchButton;
-    WebElement pageTwo;
+    WebElement pageTwoLink;
     WebElement pageTwoResult;
 
     By searchTextBoxLocator = By.id("globalQuery");
@@ -60,7 +60,7 @@ public class LibraryTest {
         searchButton.click();
 
         findIfClickable(pageTwoLocator);
-        pageTwo.click();
+        pageTwoLink.click();
 
         findIfVisible(pageTwoResultLocator);
         assertTrue ("Page 2 results number is not correct", pageTwoResult.getText().contains("10-19"));
