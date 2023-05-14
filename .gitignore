@@ -1,4 +1,4 @@
 *.class
 *.iml
 /.idea
-/.idea/sonarlint/issuestore
+/.idea/sonarlint/issuestore/index.pb
