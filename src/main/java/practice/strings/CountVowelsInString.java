@@ -15,7 +15,7 @@ public class CountVowelsInString {
 
         int numberOfVowels = 0;
 
-        for(int i=0;i<text.length(); i++) {
+        for(int i=0;i < text.length(); i++) {
             String str = text.substring(i, i+1);
             for(String v: vowels) {
                 if(str.equals(v)) {
@@ -27,5 +27,4 @@ public class CountVowelsInString {
         }
         System.out.println("\nNumber of vowels = " + numberOfVowels);
     }
-
 }

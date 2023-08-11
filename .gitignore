@@ -1,5 +1,8 @@
 *.class
+
 *.iml
-/.idea
+
+.idea/
 /.idea/sonarlint/issuestore/index.pb
 *.pb
+!*.go
