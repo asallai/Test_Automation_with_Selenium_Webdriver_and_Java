@@ -16,7 +16,7 @@ public class ListBoxAndCheckbox {
 
     static WebDriver driver;
 
-    String url = "http://the-internet.herokuapp.com/dropdown";
+    String url = "https://www-ssl.bestbuy.ca/en-CA/stores/store-locator.aspx";
 
     String provinceListXPath = "//select[@id='ctl00_CP_FindStoreUC1_StateContainer_ddlStates']";
 
